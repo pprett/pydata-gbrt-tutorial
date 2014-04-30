@@ -1,2 +1,2 @@
-pydata-gbm-tutorial
-===================
+pydata-gbrt-tutorial
+====================
