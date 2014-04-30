@@ -1,6 +1,12 @@
 PyData 2014: Gradient Boosted Regression Trees in scikit-learn
 ==============================================================
 
+*Instructor: Peter Prettenhofer*
+
+ - email: peter.prettenhofer@gmail.com
+ - twitter: [@pprett](https://twitter.com/pprett)
+ - github: [pprett](https://github.com/pprett)
+
 This repository contains the tutorial material for the
 Gradient Boosted Regression Trees in scikit-learn tutorial
 at PyData 2014.
