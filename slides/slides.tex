@@ -64,7 +64,12 @@
     \includegraphics[scale=.6]{./images/scikit-learn-logo.pdf}
 \end{figure}
 
-\vspace{1cm}
+\vspace{0.2cm}
+  \begin{center}
+    {\small Material:
+    \href{https://github.com/pprett/pydata-gbrtm-tutorial}{https://github.com/pprett/pydata-gbrt-tutorial}}\\
+  \end{center}
+\vspace{0.2cm}
 
 \begin{columns}[T]
 \begin{column}{.48\textwidth}
@@ -381,84 +386,13 @@ Gilles Louppe (\href{https://twitter.com/glouppe}{@glouppe})\\
 
 \begin{frame}[plain]
   \begin{center}
-    Notebook\\
-    \href{https://github.com/pprett/pydata-gbm-tutorial}{http://github.com/pprett/pydata-gbm-tutorial}
+    {\Large Notebook}\\
+    \vspace{0.2cm}
+    \href{https://github.com/pprett/pydata-gbrtm-tutorial}{https://github.com/pprett/pydata-gbrt-tutorial}\\
   \end{center}
 \end{frame}
 
-% Tips and Tricks ============================================================
-\begin{frame}[fragile]{Tipps \& Tricks 1}
-  \begin{block}{Input layout}
-     {\footnotesize Use dtype=np.float32 to avoid memory copies and fortan layout for slight runtime benefit.}
-     \begin{minted}[fontsize=\footnotesize]{python}
-X = np.asfortranarray(X, dtype=np.float32)
-     \end{minted}
-
-% \begin{center}
-%     \begin{tabular}{| l | l | r |}
-%     \hline
-%        & Train time [s] & Test time [ms] \\ \hline
-%     c-style & 0.006 & 0.11\\
-%     fortran-style & 192.0 & 439.00 \\
-%     \hline
-%     \end{tabular}
-% \end{center}
-
-  \end{block}
-\end{frame}
-
-\begin{frame}{Tipps \& Tricks 2}
-  \begin{block}{Feature interactions}
-     {\footnotesize GBRT automatically detects feature interactions but often explicit interactions help.\\Trees required to approximate $X_1 - X_2$: 10 (left), 1000 (right). }
-     \vspace{-0.5cm}
-     \begin{columns}[T]
-    \begin{column}{.5\textwidth}
-      \begin{figure}
-         \centering
-           \includegraphics[width=1.0\textwidth]{./images/func_approx_minus_2.pdf}
-       \end{figure}
-    \end{column}
-    \begin{column}{.5\textwidth}
-       \begin{figure}
-         \centering
-           \includegraphics[width=1.0\textwidth]{./images/func_approx_minus_3.pdf}
-       \end{figure}
-    \end{column}
-    \end{columns}
-  \end{block}
-\end{frame}
-
-\begin{frame}[fragile]{Tipps \& Tricks 3}
-  \begin{block}{Categorical variables}
-     {\footnotesize Sklearn requires that categorical variables are encoded as numerics. Tree-based methods work well with ordinal encoding: }
-     \begin{minted}[fontsize=\footnotesize]{python}
-df = pd.DataFrame(data={'icao': ['CRJ2', 'A380', 'B737', 'B737']})
-# ordinal encoding
-df_enc = pd.DataFrame(data={'icao': np.unique(df.icao,
-              return_inverse=True)[1]})
-X = np.asfortranarray(df_enc.values, dtype=np.float32)
-     \end{minted}
-  \end{block}
-\end{frame}
-
-
-% TODO
-% Tipps & Tricks: fortran layout, dtype, pickling, categorical variables, memory efficiency
-% Benchmarks vs. R GBM
-% Advantages / Disadvantages of GBRT
-%  - Handling (heterogenous) features (transformations, categoricals)
-%  - Robust to irrelevant variables; and outliers in response
-%  - Model interpretation
-%  - Flexible (non-parametric - can model any relation between fx and response)
-%    - High predicitve accuracy
-% Comparision to other methods (RF)
-%  - RF "easier" to train - much less HPs much less sensitive
-%  - GBRT fine-grained control of model complexity
-%  - regression: RF averages responses of T (mean of means); GBRT set of possible outputs is larger.
-%  - Difficult so say in general
-% When does it work?!
-% Pseudo-code
-
+\section{Use Case: California Housing}
 
 \end{document}
 
